@@ -65,7 +65,7 @@ public class CuentaDao extends Dao {
 	public List<Cuenta>listarCuentas(Usuario usuario) throws SQLException {
 		List<Cuenta> listaCuentas = new ArrayList<>();
 		
-		String query = "SELECT c.num_cuenta, c.saldo,u.user_id ,u.rut, u.correo_electronico, u.nombre " + 
+		String query = "SELECT c.cuenta_id,c.num_cuenta, c.saldo,u.user_id ,u.rut, u.correo_electronico, u.nombre " + 
                 "FROM cuenta c " + 
                 "JOIN usuario u ON c.user_id = u.user_id " + 
                 "WHERE u.is_super_user = '" + usuario.getIs_super() + "'";
@@ -77,6 +77,7 @@ public class CuentaDao extends Dao {
 			user.setRut(rs.getString("rut"));
 			user.setCorreo_electronico(rs.getString("correo_electronico"));
 			user.setNombre(rs.getString("nombre"));
+			cuenta.setCuenta_id(rs.getString("cuenta_id"));
 			cuenta.setNum_cuenta(rs.getString("num_cuenta"));
 			cuenta.setSaldo(rs.getDouble("saldo"));
 			cuenta.setUsuario(user);

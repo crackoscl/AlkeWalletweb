@@ -91,12 +91,12 @@ public class Depositar extends HttpServlet {
 	                if (res > 0) {
 	                	request.setAttribute("cuenta", cuenta);
 	                    request.setAttribute("status", "success");
-	                    request.setAttribute("mensaje", "Registro Realizado con éxito");
+	                    request.setAttribute("mensaje", "Deposito Realizado con éxito");
 	                } else {
 	                	request.setAttribute("num_cuenta", num_cuenta);
 		            	request.setAttribute("oldsaldo", oldsaldo);
 	                    request.setAttribute("status", "failed");
-	                    request.setAttribute("mensaje", "Error al Guardar");
+	                    request.setAttribute("mensaje", "Error al Depositar");
 	                }
 	            } catch (Exception e) {
 	            	request.setAttribute("num_cuenta", num_cuenta);

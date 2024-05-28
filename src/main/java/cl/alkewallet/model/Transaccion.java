@@ -7,9 +7,7 @@ public class Transaccion {
 	private int receiver_cuenta_id;
 	private int moneda_id;
 	private Double importe;
-	private String type;
 	private String transaction_date;
-	
 	
 
 	public Transaccion() {
@@ -75,12 +73,5 @@ public class Transaccion {
 		this.transaction_date = transaction_date;
 	}
 
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
+	
 }

@@ -3,26 +3,21 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.HashMap;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
-import cl.alkewallet.model.Moneda;
 
 /**
  * Obtiene los indicadores de monedas desde la API de Mindicador.
  */
 public class ApiMonedas {
-	private HashMap<String, Moneda> monedas = new HashMap<>();
+
 
 	public ApiMonedas() {
 	}
 
-	public ApiMonedas(HashMap<String, Moneda> monedas) {
-		this.monedas = monedas;
-	}
 
-	public void GetIndicadores() {
+	public  static JsonObject GetIndicadores() {
 
 		try {
 			URL url = new URL("https://mindicador.cl/api");
@@ -45,19 +40,16 @@ public class ApiMonedas {
 
 				Gson gson = new Gson();
 				JsonObject jsonObject = gson.fromJson(jsonString, JsonObject.class);
-				JsonObject dolar = jsonObject.getAsJsonObject("dolar");
-				JsonObject euro = jsonObject.getAsJsonObject("euro");
-				monedas.put(dolar.get("codigo").getAsString(),
-						new Moneda());
 				
+				return jsonObject;
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return null;
+	
+		
 	}
 
-	public HashMap<String, Moneda> getMonedas() {
-		return monedas;
-	}
 }
